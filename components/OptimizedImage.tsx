@@ -1,5 +1,5 @@
 // components/OptimizedImage.tsx
-import Image from 'next/image';
+import Image from '@/components/image';
 import { getBunnyImageUrl } from '@/lib/image-optimizer';
 
 interface OptimizedImageProps {

@@ -1,7 +1,7 @@
 import { getOrder, getOrderProductById } from "@/actions/order";
 import { Container } from "@/components/ui/container";
 import { cn, formatter, formatDeliveryDate } from "@/lib/utils";
-import Image from "next/image";
+import Image from '@/components/image';
 import { format, addHours, addDays } from "date-fns";
 import { ShippingAddress } from "@/components/order/shipping-address";
 import { Rating } from "@/components/order/rating";
