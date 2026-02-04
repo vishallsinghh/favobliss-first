@@ -91,7 +91,7 @@ export const kitchenAppliance: any[] = [
     id: "6846b1218f5c2887dac45aa2",
     title: "Coffee Maker",
     image:
-      "https://img.freepik.com/free-photo/view-coffee-making-machine_23-2150698665.jpg?ga=GA1.1.848270097.1752087718&semt=ais_hybrid&w=740&q=80",
+      "/assets/home-banner/coffee-maker.avif",
     link: "/category/kitchen-appliances?sub=coffee-maker?page=1",
     backgroundColor: "#f8f9fa",
   },
@@ -99,7 +99,7 @@ export const kitchenAppliance: any[] = [
     id: "6846b1638f5c2887dac45aa4",
     title: "Rice Cooker",
     image:
-      "https://img.freepik.com/premium-photo/electric-rice-cooker-white-background_933530-7898.jpg?ga=GA1.1.848270097.1752087718&semt=ais_hybrid&w=740&q=80",
+      "/assets/home-banner/rice-cooker.avif",
     link: "/category/kitchen-appliances?sub=rice-cooker?page=1",
     backgroundColor: "#fff5f5",
   },
@@ -107,7 +107,7 @@ export const kitchenAppliance: any[] = [
     id: "6846b1bc8f5c2887dac45aa7",
     title: "Hand Mixers",
     image:
-      "https://img.freepik.com/premium-photo/confectioner-makes-blender-cream-cake-kitchen_210733-2368.jpg?ga=GA1.1.848270097.1752087718&semt=ais_hybrid&w=740&q=80",
+      "/assets/home-banner/hand-mixer.avif",
     link: "/category/kitchen-appliances?sub=hand-mixers?page=1",
     backgroundColor: "#f0fdf4",
   },
@@ -115,7 +115,7 @@ export const kitchenAppliance: any[] = [
     id: "6846b25e8f5c2887dac45aad",
     title: "Toaster",
     image:
-      "https://img.freepik.com/free-photo/brown-retro-electronic-toaster-device_23-2151002823.jpg?ga=GA1.1.848270097.1752087718&semt=ais_hybrid&w=740&q=80",
+      "/assets/home-banner/toasters.avif",
     link: "/category/kitchen-appliances?sub=pop-up-toasters?page=1",
     backgroundColor: "#fefce8",
   },
@@ -126,7 +126,7 @@ export const applianceItems: any[] = [
     id: "68469b178f5c2887dac45a3f",
     title: "Air purifier",
     image:
-      "https://img.freepik.com/premium-vector/air-purifier-realistic-poster-with-editable-text-modern-appliance-living-room-fresh-air-dust-removing-vector-illustration_1284-70567.jpg?ga=GA1.1.1292182921.1754325589&semt=ais_hybrid&w=740&q=80",
+      "/assets/home-banner/air-purifier.avif",
     link: "/category/home-appliances?sub=air-purifier?page=1",
     backgroundColor: "#f8f9fa",
   },
@@ -134,7 +134,7 @@ export const applianceItems: any[] = [
     id: "68469b898f5c2887dac45a40",
     title: "Dishwasher",
     image:
-      "https://img.freepik.com/free-vector/3d-realistic-mock-up-kitchen-room-with-white-clean-floor-tile-wall_1441-2103.jpg?ga=GA1.1.1292182921.1754325589&semt=ais_hybrid&w=740&q=80",
+      "/assets/home-banner/dishwasher.avif",
     link: "/category/home-appliances?sub=dishwasher?page=1",
     backgroundColor: "#fff5f5",
   },
@@ -142,7 +142,7 @@ export const applianceItems: any[] = [
     id: "68469c888f5c2887dac45a45",
     title: "Refrigerators",
     image:
-      "https://img.freepik.com/free-vector/household-appliances-gift-realistic_1284-65309.jpg?ga=GA1.1.1292182921.1754325589&semt=ais_hybrid&w=740&q=80",
+      "/assets/home-banner/refrigerators.avif",
     link: "/category/home-appliances?sub=refrigerators?page=1",
     backgroundColor: "#f0fdf4",
   },
@@ -150,7 +150,7 @@ export const applianceItems: any[] = [
     id: "68469bd98f5c2887dac45a41",
     title: "Fan",
     image:
-      "https://img.freepik.com/premium-vector/ceiling-fan-silhouette-vector-white-background_931294-1887.jpg?ga=GA1.1.1292182921.1754325589&semt=ais_hybrid&w=740&q=80",
+      "/assets/home-banner/fans.avif",
     link: "/category/home-appliances?sub=fan?page=1",
     backgroundColor: "#fefce8",
   },
@@ -161,7 +161,7 @@ export const brandItems: any[] = [
     id: "68b820c05b97348b5d2f2c2c",
     title: "Smart Watches",
     image:
-      "https://img.freepik.com/premium-photo/watch-with-black-band-that-says-watch-face_1171594-38413.jpg?ga=GA1.1.357575914.1756896553&semt=ais_incoming&w=740&q=80",
+      "/assets/home-banner/smart-watch.avif",
     link: "/category/home-appliances?sub=air-purifier?page=1",
     backgroundColor: "#f8f9fa",
   },
@@ -169,7 +169,7 @@ export const brandItems: any[] = [
     id: "68b81e52465a0b8c791ba767",
     title: "Soundbar",
     image:
-      "https://img.freepik.com/free-photo/rendering-smart-home-device_23-2151039348.jpg?ga=GA1.1.357575914.1756896553&semt=ais_incoming&w=740&q=80",
+      "/assets/home-banner/soundbar.avif",
     link: "/category/home-appliances?sub=dishwasher?page=1",
     backgroundColor: "#fff5f5",
   },
@@ -177,7 +177,7 @@ export const brandItems: any[] = [
     id: "68b81f5a465a0b8c791ba76a",
     title: "Headphones",
     image:
-      "https://img.freepik.com/free-photo/headphones-displayed-against-dark-background_157027-4466.jpg?ga=GA1.1.357575914.1756896553&semt=ais_incoming&w=740&q=80",
+      "/assets/home-banner/headphones.avif",
     link: "/category/home-appliances?sub=refrigerators?page=1",
     backgroundColor: "#f0fdf4",
   },
@@ -185,7 +185,7 @@ export const brandItems: any[] = [
     id: "68b8200c465a0b8c791ba76b",
     title: "Earbuds",
     image:
-      "https://img.freepik.com/premium-photo/air-buds-bluetooth_761902-2567.jpg?ga=GA1.1.357575914.1756896553&semt=ais_incoming&w=740&q=80",
+      "/assets/home-banner/earbuds.avif",
     link: "/category/home-appliances?sub=fan?page=1",
     backgroundColor: "#fefce8",
   },
