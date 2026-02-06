@@ -34,12 +34,16 @@ export const ProductList = ({
   return (
     <div className="space-y-2 md:space-y-8">
       {title.length > 0 && (
-        <div className="flex items-center justify-between">
-          <h3 className="text-xl md:text-3xl lg:text-4xl font-bold mb-0 md:mb-5">
+        <div className="relative flex items-center justify-center">
+          <h3 className="text-xl md:text-3xl lg:text-4xl mb-0 md:mb-5 text-center w-[50%]">
             {title} {title === "Recently Viewed" && `by ${userName}`}
           </h3>
+
           {showViewAll && (
-            <Link href={link} className="text-gray-500 text-sm hover:underline">
+            <Link
+              href={link}
+              className="absolute right-[8px] text-gray-500 text-sm hover:underline"
+            >
               View All
             </Link>
           )}
@@ -48,7 +52,7 @@ export const ProductList = ({
 
       {data.length === 0 && <NoResults />}
       <div
-        className={`flex flex-row overflow-x-auto gap-4 md:gap-4 mb-2 snap-x snap-mandatory py-3 scrollbar-hide ${
+        className={`flex flex-row overflow-x-auto gap-2 md:gap-4 mb-2 snap-x snap-mandatory py-3 scrollbar-hide ${
           isSpaceTop ? "mt-0!" : ""
         }`}
         style={isSpaceTop ? { marginTop: "0px" } : {}}
@@ -56,7 +60,7 @@ export const ProductList = ({
         {data.slice(0, 5).map((product) => (
           <div
             key={product.id}
-            className={`flex-none w-[45vw] sm:w-[30vw] md:w-[25vw] lg:w-[25vw] ${className} ${
+            className={`flex-none w-[40vw] sm:w-[28vw] md:w-[25vw] lg:w-[25vw] ${className} ${
               isBannerProduct ? "xl:w-[16vw]" : "xl:w-[17vw]"
             } snap-start`}
           >

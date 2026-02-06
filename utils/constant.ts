@@ -115,7 +115,7 @@ export const kitchenAppliance: any[] = [
     id: "6846b25e8f5c2887dac45aad",
     title: "Toaster",
     image:
-      "/assets/home-banner/toasters.avif",
+      "/assets/home-banner/toaster.avif",
     link: "/category/kitchen-appliances?sub=pop-up-toasters?page=1",
     backgroundColor: "#fefce8",
   },

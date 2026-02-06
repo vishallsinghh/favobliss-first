@@ -24,7 +24,7 @@ export const Navbar = async () => {
   const locationGroups = await getLocationGroups();
 
   return (
-    <header className="shadow-neutral-100 shadow-lg p-[15px] md:p-0">
+    <header className="shadow-neutral-100 shadow-lg p-[8px] pb-[4px] md:p-0">
       <HeaderMobile categories={data} locationGroups={locationGroups}  />
       <Header categories={data} locationGroups={locationGroups} />
     </header>

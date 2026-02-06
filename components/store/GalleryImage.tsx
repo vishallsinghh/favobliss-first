@@ -27,7 +27,7 @@ const images = [
 
 const Gallery = () => {
   return (
-    <div className="w-full max-w-full mx-auto py-4 px-4 sm:px-6 lg:px-8">
+    <div className="w-full max-w-full mx-auto pt-4 px-4 sm:px-6 lg:px-8">
       {/* Mobile: Vertical scrolling like Shorts/Reels */}
       <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide md:hidden">
         <div className="flex gap-3 pb-4">

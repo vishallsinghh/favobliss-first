@@ -9,7 +9,7 @@ const WhatsAppButton = () => {
   const isProductPage = pathname.startsWith("/product/");
   return (
     <a
-      href="https://wa.me/+918077335703?text=Hello%20Favobliss%20Team!"
+      href="https://wa.me/+919990343789?text=Hello%20Favobliss%20Team!"
       className={`fixed ${
         isProductPage ? "bottom-[5.7rem]" : "bottom-[3rem]"
       } right-4 sm:right-10 

@@ -18,8 +18,8 @@ const PromtionalBannerProducts = (props: Props) => {
   const { products, locationGroups } = props;
 
   return (
-    <div className="w-full bg-transparent py-2 md:py-2 rounded-3xl pr-2">
-      <div className="max-w-full mx-auto px-2">
+    <div className="w-full bg-transparent py-2 md:py-2 rounded-3xl">
+      <div className="max-w-full mx-auto px-1">
         <div className="lg:hidden flex flex-col gap-5">
           <Swiper
             className="w-full"
@@ -27,13 +27,14 @@ const PromtionalBannerProducts = (props: Props) => {
             freeMode={true}
             mousewheel={true}
             slidesPerView="auto"
-            spaceBetween={2}
+            spaceBetween={3}
             grabCursor={true}
           >
             {products?.map((product) => (
               <SwiperSlide
                 key={product.id}
-                className="flex-shrink-0 w-[160px] max-w-[200px]"
+                className="flex-shrink-0 w-[40vw] min-w-[120px] max-w-[170px]"
+
               >
                 <ProductCard data={product.product} locationGroups={locationGroups} />
               </SwiperSlide>

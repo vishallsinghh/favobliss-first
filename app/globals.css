@@ -386,4 +386,18 @@ ul[data-type="taskList"] ul[data-type="taskList"] {
   display: inline-block;
 }
 
+/* mobile slider pagination styles */
+.hero-mobile-pagination .swiper-pagination-bullet {
+    width: 18px;
+    height: 2px;
+    border-radius: 999px;
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.18);
+    transition: all 200ms ease;
+    margin: 0 !important;
+  }
 
+  .hero-mobile-pagination .swiper-pagination-bullet-active {
+    width: 28px;
+    background: rgba(0, 0, 0, 0.55);
+  }

@@ -23,7 +23,7 @@ const BrandList = ({ brands }: Props) => {
   return (
     <div className="bg-transparent py-8 md:py-12">
       <div className="px-4 text-center mb-6 md:mb-8">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl text-gray-900">
           Explore Official Brand Stores
         </h2>
       </div>
@@ -35,7 +35,7 @@ const BrandList = ({ brands }: Props) => {
           freeMode={true}
           mousewheel={true}
           slidesPerView="auto"
-          spaceBetween={16}
+          spaceBetween={6}
           grabCursor={true}
         >
           {brands.map((item) => (
@@ -46,7 +46,7 @@ const BrandList = ({ brands }: Props) => {
               <div className="flex flex-col items-center space-y-2">
                 <Link
                   href={`/brand/${item.slug}?page=1`}
-                  className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 flex items-center justify-center rounded-full overflow-hidden cursor-pointer p-1 md:p-2"
+                  className="w-24 h-24 sm:w-24 sm:h-24 md:w-24 md:h-24 lg:w-28 lg:h-28 flex items-center justify-center rounded-full overflow-hidden cursor-pointer p-1 md:p-2"
                 >
                   <div className="relative w-full h-full flex items-center justify-center">
                     <BrandLogo

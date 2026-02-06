@@ -4,32 +4,39 @@ import React, { useEffect, useState } from "react";
 import Image from '@/components/image';
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
 // Import only needed modules + minimal CSS
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
-
+import "swiper/css/pagination";
 const HeroSliderMobile: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   const slides = [
     {
       id: 1,
-      src: "/assets/hero/banner-boat.jpg",
-      alt: "Best Television India",
+      src: "/assets/hero/website-banner-2.jpeg",
+      alt: "Cool comfort air conditioners",
       width: 1000,
       height: 340,
       priority: true,
     },
-    // {
-    //   id: 2,
-    //   src: "/assets/hero/banner-boat-2.jpg",
-    //   alt: "Best Television India",
-    //   width: 1000,
-    //   height: 340,
-    // },
+    {
+      id: 2,
+      src: "/assets/hero/banner-boat-2.jpg",
+      alt: "Boat Speaker and Earphones",
+      width: 1000,
+      height: 340,
+    },
+    {
+      id: 3,
+      src: "/assets/hero/banner1.webp",
+      alt: "Best Television India",
+      width: 1000,
+      height: 340,
+    },
   ];
 
   useEffect(() => {
@@ -48,12 +55,12 @@ const HeroSliderMobile: React.FC = () => {
   // Show first image as placeholder while loading
   if (!isLoaded) {
     return (
-      <div className="relative w-full aspect-[3/1] max-h-[600px] bg-transparent md:hidden block px-4 md:px-6 border-0">
+      <div className="relative w-full aspect-[3/1] max-h-[700px] bg-transparent md:hidden block px-[8px] md:px-6 border-0">
         <Image
           src="/assets/hero/banner-boat.jpg"
           alt="Best Television India"
           width={1000}
-          height={340}
+          height={360}
           className="w-full h-full object-fill object-center rounded-2xl"
           priority
           fetchPriority="high"
@@ -65,9 +72,9 @@ const HeroSliderMobile: React.FC = () => {
 
   return (
     <section className="relative w-full block md:hidden">
-      <div className="relative w-full aspect-[3/1] max-h-[600px] overflow-hidden px-4 md:px-6 border-0">
+      <div className="relative w-full aspect-[3/1] max-h-[700px] overflow-hidden px-[8px] md:px-6 border-0">
         <Swiper
-          modules={[Autoplay, Navigation]}
+          modules={[Autoplay, Navigation, Pagination]}
           spaceBetween={0}
           slidesPerView={1}
           loop={true}                    // important for smooth infinite
@@ -76,14 +83,18 @@ const HeroSliderMobile: React.FC = () => {
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }}
-          navigation={{
-            nextEl: ".mobile-swiper-next",
-            prevEl: ".mobile-swiper-prev",
-          }}
+          pagination={{
+  el: ".hero-mobile-pagination",
+  clickable: true,
+}}
+          // navigation={{
+          //   nextEl: ".mobile-swiper-next",
+          //   prevEl: ".mobile-swiper-prev",
+          // }}
           className="h-full w-full rounded-2xl"
         >
           {slides.map((slide) => (
-            <SwiperSlide key={slide.id} className="relative w-full h-full">
+            <SwiperSlide  key={slide.id} className="relative w-full h-full">
               <Image
                 src={slide.src}
                 alt={slide.alt}
@@ -100,15 +111,18 @@ const HeroSliderMobile: React.FC = () => {
           ))}
 
           {/* Custom navigation arrows */}
-          <div className="mobile-swiper-prev absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white/80 backdrop-blur-sm p-1.5 sm:p-2 rounded-full shadow-lg cursor-pointer z-10 hover:bg-white transition-all duration-200">
+          {/* <div className="mobile-swiper-prev absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white/80 backdrop-blur-sm p-1.5 sm:p-2 rounded-full shadow-lg cursor-pointer z-10 hover:bg-white transition-all duration-200">
             <ChevronLeft size={20} className="text-gray-800 sm:w-6 sm:h-6" />
           </div>
 
           <div className="mobile-swiper-next absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white/80 backdrop-blur-sm p-1.5 sm:p-2 rounded-full shadow-lg cursor-pointer z-10 hover:bg-white transition-all duration-200">
             <ChevronRight size={20} className="text-gray-800 sm:w-6 sm:h-6" />
-          </div>
+          </div> */}
         </Swiper>
+
       </div>
+        <div className="hero-mobile-pagination my-3 flex items-center justify-center gap-2" />
+      
     </section>
   );
 };

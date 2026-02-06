@@ -28,14 +28,14 @@ const LandingPageSection: React.FC<HomeAppliancesSectionProps> = ({
   return (
     <div className={`rounded-2xl p-3 md:p-6 w-full max-w-full ${className}`}>
       {title?.length > 0 && (
-        <div className="flex justify-between items-center mb-3 md:mb-6">
-          <h2 className="text-base md:text-xl font-semibold text-gray-900">
+        <div className="relative flex items-center justify-center pb-2">
+          <h2 className="md:text-3xl lg:text-4xl mb-0 md:mb-5 text-center w-[50%]">
             {title}
           </h2>
           {viewAllLink && (
             <Link
               href={viewAllLink}
-              className="text-sm md:text-sm text-gray-600 hover:text-gray-800 transition-colors hover:underline"
+              className="absolute right-[8px] text-gray-500 text-sm hover:underline"
             >
               View All
             </Link>
@@ -43,7 +43,7 @@ const LandingPageSection: React.FC<HomeAppliancesSectionProps> = ({
         </div>
       )}
 
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6 bg-white p-3 rounded-xl">
+      <div className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-6 bg-white p-2 rounded-xl">
         {items.map((item) => (
           <div key={item.id}>
             <ApplianceCard
@@ -67,7 +67,7 @@ const ApplianceCard: React.FC<ApplianceCardProps> = React.memo(
     return (
       <div
         onClick={() => handleCategoryChange(item.id)}
-        className="bg-[#d9d9d9] rounded-xl p-3"
+        className="bg-[#e8e8e8] rounded-xl p-1"
       >
         <div className="group cursor-pointer">
           <div className="relative w-full aspect-square rounded-xl mb-3 overflow-hidden transition-transform group-hover:scale-105">
@@ -80,7 +80,7 @@ const ApplianceCard: React.FC<ApplianceCardProps> = React.memo(
             />
           </div>
 
-          <h3 className="text-sm font-medium text-gray-900 text-center group-hover:text-orange-500 transition-colors">
+          <h3 className="text-sm font-medium text-gray-900 text-center group-hover:text-orange-500 transition-colors pb-1">
             {item.title}
           </h3>
         </div>

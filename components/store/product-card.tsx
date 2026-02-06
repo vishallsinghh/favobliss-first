@@ -151,7 +151,7 @@ export const ProductCard = ({
 
   return (
     <Link href={`/${theVariant?.slug}`} className="w-full cursor-pointer">
-      <div className="relative bg-gray-100 rounded-xl p-3 md:p-4 shadow-[0_0_15px_0_rgba(107,114,128,0.25)] hover:shadow-[0_0_20px_0_rgba(107,114,128,0.35)] transition-shadow duration-200 h-full">
+      <div className="relative bg-gray-100 rounded-xl p-1 md:p-4 shadow-[0_0_15px_0_rgba(107,114,128,0.25)] hover:shadow-[0_0_20px_0_rgba(107,114,128,0.35)] transition-shadow duration-200 h-full">
         {/* <div className="absolute top-2 left-2 bg-orange-400 text-white text-xs px-2 py-1 rounded-full font-medium z-[10]">
           {discount}% off
         </div> */}
@@ -172,7 +172,7 @@ export const ProductCard = ({
           )}
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2 px-2">
           <h3 className="font-medium text-gray-900 text-xs md:text-sm leading-tight line-clamp-2 min-h-[2rem] md:min-h-[2.5rem]">
             {theVariant.name}
           </h3>
@@ -180,7 +180,7 @@ export const ProductCard = ({
             {renderStars(data.averageRating || 0)}
           </div>
           <div className="space-y-1">
-            <div className="flex flex-col flex-wrap sm:flex-row sm:items-center sm:space-x-2 space-y-1 sm:space-y-0">
+            <div className="flex flex-col flex-wrap sm:flex-row sm:items-center sm:space-x-2 sm:space-y-0">
               <span
                 className="text-[16px] font-bold text-gray-900"
                 style={{ fontSize: "16px" }}
@@ -188,20 +188,19 @@ export const ProductCard = ({
                 {formatPrice(locationPrice.price)}
               </span>
               <div className="flex items-center space-x-2 flex-wrap">
-                {locationPrice.mrp > locationPrice.price && (
+                
                   <div
-                    className="text-[12px] text-gray-500 whitespace-nowrap"
-                    style={{ fontSize: "12px" }}
+                    className="text-[10px] md:text-[12px]  text-gray-500 whitespace-nowrap"
+                    
                   >
                     MRP{" "}
                     <span className="line-through">
                       {formatPrice(locationPrice.mrp)}
                     </span>
                   </div>
-                )}
                 <div
-                  className="bg-orange-400 text-white text-[12px] px-2 py-1 rounded-full font-medium whitespace-nowrap"
-                  style={{ fontSize: "12px" }}
+                  className="bg-orange-400 text-white text-[10px] md:text-[12px] px-2 py-1 rounded-full font-medium whitespace-nowrap"
+                  
                 >
                   {discount}% off
                 </div>

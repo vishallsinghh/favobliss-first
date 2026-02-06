@@ -60,12 +60,12 @@ export function CategorySlider(props: Props) {
   };
 
   const MobileGridLayout = () => (
-    <div className="block md:hidden w-full bg-white py-5 md:py-8 pb-0">
-      <div className="px-4">
+    <div className="block md:hidden w-full bg-white py-2 md:py-8 pb-0">
+      <div className="px-2">
         <div
-          className="grid grid-rows-2 gap-y-4 overflow-x-auto pb-4"
+          className="grid grid-rows-1 gap-y-2 overflow-x-auto pb-2"
           style={{
-            gridTemplateColumns: "repeat(11, minmax(100px, 1fr))", // Adjusted for 3.5 categories per row
+            gridTemplateColumns: "repeat(11, minmax(80px, 1fr))", // Adjusted for 3.5 categories per row
             width: "calc(100vw - 2rem)",
             scrollBehavior: "smooth",
             WebkitOverflowScrolling: "touch",
