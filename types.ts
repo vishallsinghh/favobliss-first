@@ -199,6 +199,7 @@ export interface VariantImage {
   id: string;
   url: string;
   mediaType: "IMAGE" | "VIDEO";
+  createdAt: Date;
 }
 
 export interface Color {
@@ -389,6 +390,7 @@ export interface HomepageCategory {
   id: string;
   name: string;
   description: string;
+  link: string;
   createdAt: string;
   updatedAt: string;
   products: HomePageCategoryProduct[];
