@@ -50,7 +50,8 @@ const HomepageCategoriesPage = async ({
       id: item.id,
       name: item.name,
       description: item.description || "No description",
-      link: item?.link || "/",
+      link: (item as any)?.link || "/", // ✅ bypass stale prisma types
+
       productCount: item.products.length,
       productNames: item.products.map(
         (cp) => cp.product.variants[0]?.name || "Unnamed Product"

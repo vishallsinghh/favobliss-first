@@ -47,7 +47,6 @@ export function CategorySlider(props: Props) {
     const img = new window.Image();
     img.src = getImageSrc(categories[0]);
     img.onload = () => setIsLoaded(true);
-    console.log(`imgsrc ${getImageSrc(categories[0])}`);
   }, []);
 
   const getImageSrc = (category: Category) => {
@@ -57,7 +56,7 @@ export function CategorySlider(props: Props) {
         lowerCaseName as keyof typeof defaultCategoryImages
       ];
     }
-    console.log(`imagesrc ${getImageSrc(category)}`);
+    
     return "/assets/category/air-conditioner.png";
   };
 

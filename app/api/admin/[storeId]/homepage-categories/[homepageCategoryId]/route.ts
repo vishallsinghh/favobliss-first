@@ -54,7 +54,7 @@ export async function PATCH(
       data: {
         name,
         description,
-        link
+        ...(link !== undefined ? { link } : {}),
       },
     });
 

@@ -56,7 +56,8 @@ export const HomepageCategoryForm = ({
     defaultValues: data
       ? {
           name: data.name,
-          link: data.link || "",
+          link: (data as any)?.link || "/", // ✅ bypass stale prisma types
+
           description: data.description || "",
         }
       : {
