@@ -30,13 +30,13 @@ const HeroSliderMobile: React.FC = () => {
       width: 1000,
       height: 340,
     },
-    // {
-    //   id: 3,
-    //   src: "/assets/hero/banner1.webp",
-    //   alt: "Best Television India",
-    //   width: 1000,
-    //   height: 340,
-    // },
+    {
+      id: 3,
+      src: "/assets/hero/website-banner-3.png",
+      alt: "Best Washing Machines in India",
+      width: 1000,
+      height: 340,
+    },
   ];
 
   useEffect(() => {
