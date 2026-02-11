@@ -15,7 +15,6 @@ interface PremiumProductsSectionProps {
   backgroundColor?: string;
   className?: string;
 }
-
 const PremiumProductsSection: React.FC<PremiumProductsSectionProps> = ({
   products,
   backgroundColor = "#9fd6ff",
