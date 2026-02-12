@@ -1,7 +1,7 @@
 import { getOrder, getOrderProductById } from "@/actions/order";
 import { Container } from "@/components/ui/container";
 import { cn, formatter, formatDeliveryDate } from "@/lib/utils";
-import Image from '@/components/image';
+import Image from "@/components/image";
 import { format, addHours, addDays } from "date-fns";
 import { ShippingAddress } from "@/components/order/shipping-address";
 import { Rating } from "@/components/order/rating";
@@ -31,10 +31,9 @@ interface OrderDetailsPageProps {
 }
 export const dynamic = "force-dynamic";
 
-
 const OrderDetailsPage = async ({ params }: OrderDetailsPageProps) => {
   const orderProduct = await getOrderProductById(params.orderId);
-  const order = (await getOrder(orderProduct.orderId));
+  const order = await getOrder(orderProduct.orderId);
 
   if (!order) {
     return (
@@ -122,14 +121,14 @@ const OrderDetailsPage = async ({ params }: OrderDetailsPageProps) => {
             status === "CANCELLED"
               ? "Cancelled"
               : status === "RETURNED"
-              ? "Returned"
-              : "Refunded",
+                ? "Returned"
+                : "Refunded",
           description:
             status === "CANCELLED"
               ? "Your order has been cancelled."
               : status === "RETURNED"
-              ? "Your order has been returned."
-              : "Your order has been refunded.",
+                ? "Your order has been returned."
+                : "Your order has been refunded.",
         };
       default:
         return {
@@ -230,7 +229,7 @@ const OrderDetailsPage = async ({ params }: OrderDetailsPageProps) => {
                     statusInfo.bgColor,
                     statusInfo.color,
                     statusInfo.borderColor,
-                    "border"
+                    "border",
                   )}
                 >
                   <StatusIcon className="w-4 h-4" />
@@ -251,14 +250,14 @@ const OrderDetailsPage = async ({ params }: OrderDetailsPageProps) => {
                       "px-6 py-4 border-b",
                       order.isPaid
                         ? "bg-emerald-50 border-emerald-200"
-                        : "bg-blue-50 border-blue-200"
+                        : "bg-blue-50 border-blue-200",
                     )}
                   >
                     <div className="flex items-center gap-3">
                       <div
                         className={cn(
                           "w-10 h-10 rounded-full flex items-center justify-center",
-                          order.isPaid ? "bg-emerald-100" : "bg-blue-100"
+                          order.isPaid ? "bg-emerald-100" : "bg-blue-100",
                         )}
                       >
                         {order.isPaid ? (
@@ -271,7 +270,7 @@ const OrderDetailsPage = async ({ params }: OrderDetailsPageProps) => {
                         <h3
                           className={cn(
                             "font-semibold",
-                            order.isPaid ? "text-emerald-900" : "text-blue-900"
+                            order.isPaid ? "text-emerald-900" : "text-blue-900",
                           )}
                         >
                           {order.isPaid
@@ -281,7 +280,7 @@ const OrderDetailsPage = async ({ params }: OrderDetailsPageProps) => {
                         <p
                           className={cn(
                             "text-sm",
-                            order.isPaid ? "text-emerald-700" : "text-blue-700"
+                            order.isPaid ? "text-emerald-700" : "text-blue-700",
                           )}
                         >
                           On {format(order.createdAt, "EEEE, dd LLL yyyy")}
@@ -329,135 +328,141 @@ const OrderDetailsPage = async ({ params }: OrderDetailsPageProps) => {
                   </h3>
                 </div>
 
-                {//@ts-ignore
-                order.orderProducts.map((product) => {
-                  return (
-                    <div className="p-6" key={product.id}>
-                      <div className="flex gap-6">
-                        <div className="flex-shrink-0">
-                          <div className="w-32 h-40 rounded-lg overflow-hidden bg-gray-100">
-                            <OptimizedImage
-                              src={product.productImage || ""}
-                              width={128}
-                              height={160}
-                              alt="Product Image"
-                              className="w-full h-full object-cover"
-                            />
+                {
+                  //@ts-ignore
+                  order.orderProducts.map((product) => {
+                    return (
+                      <div className="p-6" key={product.id}>
+                        <div className="flex gap-6">
+                          <div className="flex-shrink-0">
+                            <div className="w-32 h-40 rounded-lg overflow-hidden bg-gray-100">
+                              <OptimizedImage
+                                src={product.productImage || ""}
+                                width={128}
+                                height={160}
+                                alt="Product Image"
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                          </div>
+
+                          <div className="flex-1">
+                            <Link
+                              href={`/${product.slug}`}
+                              className="text-sm md:text-lg font-semibold text-gray-900 mb-2 cursor-pointer hover:text-blue-600 block line-clamp-3"
+                            >
+                              {product.name}
+                            </Link>
+
+                            {product.about &&
+                              !product.about.startsWith("{") && (
+                                <p className="text-gray-600 mb-4 line-clamp-2">
+                                  {product.about}
+                                </p>
+                              )}
+
+                            <div className="hidden md:grid grid-cols-2 gap-4 text-sm">
+                              {product.size && (
+                                <div>
+                                  <span className="text-gray-500">Size:</span>
+                                  <span className="ml-2 font-medium text-gray-900">
+                                    {product.size}
+                                  </span>
+                                </div>
+                              )}
+                              {product.color && (
+                                <div>
+                                  <span className="text-gray-500">Color:</span>
+                                  <span className="ml-2 font-medium text-gray-900">
+                                    {product.color}
+                                  </span>
+                                </div>
+                              )}
+                              <div>
+                                <span className="text-gray-500">Quantity:</span>
+                                <span className="ml-2 font-medium text-gray-900">
+                                  {product.quantity || 1}
+                                </span>
+                              </div>
+                              <div>
+                                <span className="text-gray-500">
+                                  Payment Method:
+                                </span>
+                                <span className="ml-2 font-medium text-gray-900">
+                                  {product.paymentMethod === "cod"
+                                    ? "Cash on Delivery"
+                                    : "Online Payment"}
+                                </span>
+                              </div>
+                              <div>
+                                <span className="text-gray-500">MRP:</span>
+                                <span className="ml-2 font-medium text-gray-900">
+                                  {formatter.format(
+                                    product.mrp || product.price || 0,
+                                  )}
+                                </span>
+                              </div>
+                              <div>
+                                <span className="text-gray-500">Price:</span>
+                                <span className="ml-2 font-medium text-gray-900">
+                                  {formatter.format(product.price || 0)}
+                                </span>
+                              </div>
+                            </div>
                           </div>
                         </div>
-
-                        <div className="flex-1">
-                          <Link
-                            href={`/${product.slug}`}
-                            className="text-sm md:text-lg font-semibold text-gray-900 mb-2 cursor-pointer hover:text-blue-600 block"
-                          >
-                            {product.name}
-                          </Link>
-                          {product.about && !product.about.startsWith("{") && (
-                            <p className="text-gray-600 mb-4">
-                              {product.about}
-                            </p>
+                        <div className="grid grid-cols-2 gap-4 text-sm md:hidden">
+                          {product.size && (
+                            <div>
+                              <span className="text-gray-500">Size:</span>
+                              <span className="ml-2 font-medium text-gray-900">
+                                {product.size}
+                              </span>
+                            </div>
                           )}
-
-                          <div className="hidden md:grid grid-cols-2 gap-4 text-sm">
-                            {product.size && (
-                              <div>
-                                <span className="text-gray-500">Size:</span>
-                                <span className="ml-2 font-medium text-gray-900">
-                                  {product.size}
-                                </span>
-                              </div>
-                            )}
-                            {product.color && (
-                              <div>
-                                <span className="text-gray-500">Color:</span>
-                                <span className="ml-2 font-medium text-gray-900">
-                                  {product.color}
-                                </span>
-                              </div>
-                            )}
+                          {product.color && (
                             <div>
-                              <span className="text-gray-500">Quantity:</span>
+                              <span className="text-gray-500">Color:</span>
                               <span className="ml-2 font-medium text-gray-900">
-                                {product.quantity || 1}
+                                {product.color}
                               </span>
                             </div>
-                            <div>
-                              <span className="text-gray-500">
-                                Payment Method:
-                              </span>
-                              <span className="ml-2 font-medium text-gray-900">
-                                {product.paymentMethod === "cod"
-                                  ? "Cash on Delivery"
-                                  : "Online Payment"}
-                              </span>
-                            </div>
-                            <div>
-                              <span className="text-gray-500">MRP:</span>
-                              <span className="ml-2 font-medium text-gray-900">
-                                {formatter.format(
-                                  product.mrp || product.price || 0
-                                )}
-                              </span>
-                            </div>
-                            <div>
-                              <span className="text-gray-500">Price:</span>
-                              <span className="ml-2 font-medium text-gray-900">
-                                {formatter.format(product.price || 0)}
-                              </span>
-                            </div>
+                          )}
+                          <div>
+                            <span className="text-gray-500">Quantity:</span>
+                            <span className="ml-2 font-medium text-gray-900">
+                              {product.quantity || 1}
+                            </span>
+                          </div>
+                          <div>
+                            <span className="text-gray-500">
+                              Payment Method:
+                            </span>
+                            <span className="ml-2 font-medium text-gray-900">
+                              {product.paymentMethod === "cod"
+                                ? "Cash on Delivery"
+                                : "Online Payment"}
+                            </span>
+                          </div>
+                          <div>
+                            <span className="text-gray-500">MRP:</span>
+                            <span className="ml-2 font-medium text-gray-900">
+                              {formatter.format(
+                                product.mrp || product.price || 0,
+                              )}
+                            </span>
+                          </div>
+                          <div>
+                            <span className="text-gray-500">Price:</span>
+                            <span className="ml-2 font-medium text-gray-900">
+                              {formatter.format(product.price || 0)}
+                            </span>
                           </div>
                         </div>
                       </div>
-                      <div className="grid grid-cols-2 gap-4 text-sm md:hidden">
-                        {product.size && (
-                          <div>
-                            <span className="text-gray-500">Size:</span>
-                            <span className="ml-2 font-medium text-gray-900">
-                              {product.size}
-                            </span>
-                          </div>
-                        )}
-                        {product.color && (
-                          <div>
-                            <span className="text-gray-500">Color:</span>
-                            <span className="ml-2 font-medium text-gray-900">
-                              {product.color}
-                            </span>
-                          </div>
-                        )}
-                        <div>
-                          <span className="text-gray-500">Quantity:</span>
-                          <span className="ml-2 font-medium text-gray-900">
-                            {product.quantity || 1}
-                          </span>
-                        </div>
-                        <div>
-                          <span className="text-gray-500">Payment Method:</span>
-                          <span className="ml-2 font-medium text-gray-900">
-                            {product.paymentMethod === "cod"
-                              ? "Cash on Delivery"
-                              : "Online Payment"}
-                          </span>
-                        </div>
-                        <div>
-                          <span className="text-gray-500">MRP:</span>
-                          <span className="ml-2 font-medium text-gray-900">
-                            {formatter.format(
-                              product.mrp || product.price || 0
-                            )}
-                          </span>
-                        </div>
-                        <div>
-                          <span className="text-gray-500">Price:</span>
-                          <span className="ml-2 font-medium text-gray-900">
-                            {formatter.format(product.price || 0)}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })
+                }
               </div>
 
               {/* Order Timeline */}
@@ -475,7 +480,7 @@ const OrderDetailsPage = async ({ params }: OrderDetailsPageProps) => {
                       const isCurrent =
                         step.status === order.status ||
                         (["CANCELLED", "RETURNED", "REFUNDED"].includes(
-                          step.status
+                          step.status,
                         ) &&
                           step.status === order.status);
                       const isCompleted = timelineSteps
@@ -497,7 +502,7 @@ const OrderDetailsPage = async ({ params }: OrderDetailsPageProps) => {
                                 isCurrent || isCompleted
                                   ? step.borderColor
                                   : "border-orange-200",
-                                "border-2"
+                                "border-2",
                               )}
                             >
                               <step.icon
@@ -505,7 +510,7 @@ const OrderDetailsPage = async ({ params }: OrderDetailsPageProps) => {
                                   "w-5 h-5",
                                   isCurrent || isCompleted
                                     ? step.color
-                                    : "text-orange-400"
+                                    : "text-orange-400",
                                 )}
                               />
                             </div>
@@ -515,7 +520,7 @@ const OrderDetailsPage = async ({ params }: OrderDetailsPageProps) => {
                                   "w-0.5 h-12 mt-2",
                                   isCompleted || isCurrent
                                     ? step.bgColor
-                                    : "bg-orange-300"
+                                    : "bg-orange-300",
                                 )}
                               />
                             )}
@@ -528,7 +533,7 @@ const OrderDetailsPage = async ({ params }: OrderDetailsPageProps) => {
                                 "font-medium",
                                 isCurrent || isCompleted
                                   ? "text-gray-900"
-                                  : "text-gray-500"
+                                  : "text-gray-500",
                               )}
                             >
                               {step.label}
@@ -546,7 +551,7 @@ const OrderDetailsPage = async ({ params }: OrderDetailsPageProps) => {
                                 "text-sm mt-1",
                                 isCurrent || isCompleted
                                   ? "text-gray-600"
-                                  : "text-gray-400"
+                                  : "text-gray-400",
                               )}
                             >
                               {step.description}
@@ -674,7 +679,7 @@ const OrderDetailsPage = async ({ params }: OrderDetailsPageProps) => {
                     <Phone className="w-4 h-4 text-[#ef9120] mt-1" />
                     <div>
                       <p className="font-medium text-gray-900">Call Support</p>
-                      <p className="text-sm text-gray-600">1800-XXX-XXXX</p>
+                      <p className="text-sm text-gray-600">+91 9990343789</p>
                     </div>
                   </button>
 
@@ -683,7 +688,7 @@ const OrderDetailsPage = async ({ params }: OrderDetailsPageProps) => {
                     <div>
                       <p className="font-medium text-gray-900">Email Support</p>
                       <p className="text-sm text-gray-600">
-                        favoblis@gmail.com
+                        support@favobliss.com
                       </p>
                     </div>
                   </button>
