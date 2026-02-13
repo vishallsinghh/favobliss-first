@@ -1,5 +1,6 @@
 import { auth } from "@/auth";
 import { db } from "@/lib/db";
+import { revalidateTag } from "next/cache";
 import { NextResponse } from "next/server";
 
 const allowedOrigins = [
@@ -58,6 +59,8 @@ export async function PATCH(
       },
     });
 
+    revalidateTag(`homepage-categories-${params.storeId}`);
+
     return NextResponse.json(homepageCategory);
   } catch (error) {
     console.log("[HOMEPAGECATEGORY_PATCH]", error);
@@ -104,6 +107,9 @@ export async function DELETE(
         storeId: params.storeId,
       },
     });
+
+    
+  revalidateTag(`homepage-categories-${params.storeId}`);
 
     return NextResponse.json(homepageCategory);
   } catch (error) {

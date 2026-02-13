@@ -3,6 +3,7 @@ import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
 import { Prisma } from "@prisma/client";
 import {format} from "date-fns";
+import { revalidateTag } from "next/cache";
 
 
 export async function POST(
@@ -46,14 +47,14 @@ export async function POST(
       },
     });
 
+    revalidateTag(`homepage-categories-${params.storeId}`);
+
     return NextResponse.json(homepageCategory);
   } catch (error) {
     console.log("[HOMEPAGECATEGORY_POST]", error);
     return new NextResponse("Internal server error", { status: 500 });
   }
 }
-
-
 
 export async function GET(
   request: Request,
