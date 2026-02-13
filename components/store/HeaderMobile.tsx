@@ -51,6 +51,8 @@ export default function HeaderMobile({
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [isSearchDropdownOpen, setIsSearchDropdownOpen] = useState(false);
   const [showSearchResults, setShowSearchResults] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
   const isMobile = useMediaQuery("(max-width: 1000px)");
   const { data: session, status } = useSession();
   const { getItemCount } = useCart();
@@ -75,6 +77,7 @@ export default function HeaderMobile({
   const isMounted = useRef(true);
 
   useEffect(() => {
+    setMounted(true);
     return () => {
       isMounted.current = false;
     };
@@ -131,9 +134,6 @@ export default function HeaderMobile({
     setSearchQuery("");
   };
 
-  // if (!isMobile) {
-  //   return null;
-  // }
 
   const transformCategoriesToMenuCategories = (
     apiCategories: any[],
@@ -271,7 +271,7 @@ export default function HeaderMobile({
             aria-label="View shopping cart"
           >
             <ShoppingCart size={24} />
-            {itemCount > 0 && (
+            {mounted && itemCount > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
                 {itemCount}
               </span>
@@ -431,89 +431,7 @@ export default function HeaderMobile({
         {showSearchResults && (
           <div className="absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-md shadow-lg z-[9999] max-h-96 overflow-y-auto mt-1">
             <div className="flex flex-col md:flex-row min-h-[300px] max-h-[400px]">
-              {/* <div className="w-full md:w-1/2 border-b md:border-b-0 md:border-r border-gray-200">
-                <div className="p-3 bg-gray-50 border-b border-gray-200">
-                  <h3 className="text-base font-semibold text-gray-900">
-                    {searchQuery || !searchResults?.isSuggested
-                      ? "Suggestions"
-                      : "Explore These Categories"}
-                  </h3>
-                </div>
-                <div className="overflow-y-auto max-h-[350px]">
-                  {isSearching ? (
-                    <div className="px-3 py-2 text-sm text-gray-700">
-                      Searching...
-                    </div>
-                  ) : (
-                    <div className="py-2">
-                      {(searchResults?.categories ?? []).length > 0 && (
-                        <>
-                          {searchResults?.categories.map((category) => (
-                            <button
-                              key={category.id}
-                              onClick={() =>
-                                handleResultClick(
-                                  `/category/${category.slug}?page=1`
-                                )
-                              }
-                              className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors border-b border-gray-100 last:border-b-0"
-                            >
-                              {category.name}
-                            </button>
-                          ))}
-                        </>
-                      )}
-
-                      {(searchResults?.subCategories ?? []).length > 0 && (
-                        <>
-                          {searchResults?.subCategories?.map((subCategory) => (
-                            <button
-                              key={subCategory.id}
-                              onClick={() =>
-                                handleResultClick(
-                                  `/category/${
-                                    subCategory.category?.slug || "unknown"
-                                  }?sub=${subCategory.slug}?page=1`
-                                )
-                              }
-                              className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors border-b border-gray-100 last:border-b-0"
-                            >
-                              {subCategory.name}
-                            </button>
-                          ))}
-                        </>
-                      )}
-
-                      {(searchResults?.brands ?? []).length > 0 && (
-                        <>
-                          {searchResults?.brands?.map((brand) => (
-                            <button
-                              key={brand.id}
-                              onClick={() =>
-                                handleResultClick(`/brand/${brand.slug}?page=1`)
-                              }
-                              className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors border-b border-gray-100 last:border-b-0"
-                            >
-                              {brand.name}
-                            </button>
-                          ))}
-                        </>
-                      )}
-
-                      {searchQuery &&
-                        !isSearching &&
-                        (searchResults?.categories ?? []).length === 0 &&
-                        (searchResults?.subCategories ?? []).length === 0 &&
-                        (searchResults?.brands ?? []).length === 0 &&
-                        (searchResults?.products ?? []).length === 0 && (
-                          <div className="px-3 py-5 text-sm text-gray-500 text-center">
-                            No suggestions found
-                          </div>
-                        )}
-                    </div>
-                  )}
-                </div>
-              </div> */}
+            
 
               <div className="w-full md:w-1/2">
                 <div className="p-3 bg-gray-50 border-b border-gray-200">

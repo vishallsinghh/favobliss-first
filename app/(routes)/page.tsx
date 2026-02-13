@@ -84,7 +84,7 @@ const LandingPage = async ({ params }: { params: { storeId: string } }) => {
       <div className="bg-[#f8f8f8] min-h-screen relative">
         <HeroSlider />
         <HeroSliderMobile />
-        <CategorySlider categories={categories} />
+        <CategorySlider  />
         <GalleryImage />
         <Container>
           <div className="space-y-10 pb-20 mt-8">
