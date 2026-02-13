@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     siteName: "FavoBliss",
     images: [
       {
-        url: "https://www.electrax.in/assets/logo.jpg", 
+        url: "https://favobliss.com/assets/logo.jpg", 
         width: 1200,
         height: 630,
         alt: "FavoBliss Contact Support",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Contact Us | FavoBliss Support",
     description: "Reach out via WhatsApp or Email – quick response guaranteed!",
-    images: ["https://www.electrax.in/assets/logo.jpg"],
+    images: ["https://favobliss.com/assets/logo.jpg"],
   },
   alternates: {
     canonical: "https://favobliss.com/contact",

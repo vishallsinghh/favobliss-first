@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Shopping Cart – FavoBliss",
     description: "Complete your purchase securely.",
-    images: ["https://www.electrax.in/assets/logo.jpg"], 
+    images: ["https://favobliss.com/assets/logo.jpg"], 
   },
 };
 
