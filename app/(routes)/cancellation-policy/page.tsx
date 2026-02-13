@@ -1,13 +1,8 @@
 import React from "react";
 
 const page = () => {
-  return (
-    <div className="w-full flex flex-col text-left items-center justify-center mb-8">
-      <h1 className="text-3xl font-bold mt-10">
-        Favobliss Cancellation Policy
-      </h1>
-      <p className=" mt-6 text-lg w-[80%] mx-auto flex flex-col gap-y-4">
-       How can I cancel my order?
+ const cancellationPolicy = `
+  How can I cancel my order?
 
 Free to cancel your order before it has been processed. You get full amount refunded for such a cancellation. Here's how to cancel your order:
 
@@ -64,7 +59,87 @@ Just initiate for return request from your account section.
 Why was my order cancelled?
 
 Due to unavailability of the product.
-      </p>
+ `.trim()
+  const formatPolicy = (raw: string) => {
+    const headings = new Set([
+      "FAVOBLISS PRIVACY POLICY",
+      "WHAT PERSONAL INFORMATION ABOUT CUSTOMERS DO WE COLLECT?",
+      "INFORMATION YOU GIVE US",
+      "AUTOMATIC INFORMATION",
+      "E-MAIL COMMUNICATIONS",
+      "INFORMATION FROM OTHER SOURCES",
+      "WHAT ABOUT COOKIES?",
+      "DOES FAVOBLISS SHARE THE INFORMATION IT RECEIVES?",
+      "HOW SECURE IS INFORMATION ABOUT ME?",
+      "WHAT ABOUT THIRD-PARTY ADVERTISERS AND LINKS TO OTHER WEB SITES?",
+      "WHAT INFORMATION CAN I ACCESS?",
+      "WHAT CHOICES DO I HAVE?",
+      "ARE CHILDREN ALLOWED TO USE FAVOBLISS.COM?",
+      "NOTICES AND REVISIONS",
+      "EXAMPLES OF INFORMATION COLLECTED",
+      "INFORMATION YOU GIVE US",
+      "AUTOMATIC INFORMATION",
+      "INFORMATION YOU CAN ACCESS",
+    ]);
+
+    return raw.split("\n").map((line, idx) => {
+      const text = line.trim();
+
+      if (!text) return <div key={idx} className="h-3" />;
+
+      // numbered list item
+      if (/^\d+\.\s+/.test(text)) {
+        return (
+          <p key={idx} className="text-sm md:text-base leading-7 text-gray-700">
+            {text}
+          </p>
+        );
+      }
+
+      // main headings
+      if (headings.has(text.toUpperCase())) {
+        return (
+          <h2
+            key={idx}
+            className="mt-6 mb-2 text-lg md:text-xl font-semibold text-gray-900"
+          >
+            {text}
+          </h2>
+        );
+      }
+
+      // sub headings (simple heuristic)
+      if (text.length <= 50 && text === text.toUpperCase()) {
+        return (
+          <h3
+            key={idx}
+            className="mt-4 mb-1 text-base font-semibold text-gray-900"
+          >
+            {text}
+          </h3>
+        );
+      }
+
+      return (
+        <p key={idx} className="text-sm md:text-base leading-7 text-gray-700">
+          {text}
+        </p>
+      );
+    });
+  };
+
+  return (
+    <div className="w-full flex flex-col text-center items-center justify-center mb-8">
+      <h1 className="text-3xl font-bold mt-10">Favobliss Privacy Policy</h1>
+
+      {/* Added: content container */}
+      <div className="w-full max-w-5xl mt-6 px-4">
+        <div className="text-left bg-white rounded-xl border border-gray-200 shadow-sm">
+          <div className="px-5 md:px-8 py-6 max-h-[75vh] overflow-y-auto">
+            {formatPolicy(cancellationPolicy)}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
