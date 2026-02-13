@@ -27,7 +27,7 @@ const PremiumProductsSection: React.FC<PremiumProductsSectionProps> = ({
     >
       {/* Top Banner */}
       <div className="w-full mb-6 relative">
-        <div className="relative w-full h-[140px] sm:h-[170px] md:h-[220px]">
+        <div className="relative w-full h-[140px] sm:h-[170px] md:h-[440px]">
           <Image
             src="/assets/home-banner/home-banner-2.jpeg"
             alt="Home Banner"

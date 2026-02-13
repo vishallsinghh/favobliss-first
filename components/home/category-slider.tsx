@@ -9,56 +9,31 @@ import {
 } from "@/components/ui/carousel";
 import Link from "next/link";
 
-const defaultCategoryImages = {
-  "air conditioners": "/assets/category/air-conditioner.png",
-  television: "/assets/category/television.png",
-  "washing machine": "/assets/category/washing-machine.png",
-  "home appliances": "/assets/category/air-conditioner.png",
-  "kitchen appliances": "/assets/category/kitchen-appliance.png",
-  laptop: "/assets/category/computer-printer.png",
-  "personal care": "/assets/category/personal-care.png",
-  "air purifier": "/assets/category/air-purifier.png",
-  "water purifiers": "/assets/category/water-purifier.png",
-  "home audio": "/assets/category/home-audio.png",
-  "air coolers": "/assets/category/air-cooler.png",
-  watch: "/assets/category/watch.png",
-  refrigerator: "/assets/category/refrigerator.png",
-  mobiles: "/assets/category/mobiles.png",
-  "gas stove": "/assets/category/gas-stove.png",
-  chimney: "/assets/category/chimney.png",
-  printers: "/assets/category/printer.png",
-};
 
-interface Category {
-  id: string;
-  name: string;
-  slug: string;
-}
+const categorySlider = [
+  { title: "Air Conditioners", image: "/assets/category-slider/air-conditioner.png", link: "/air-conditioners" },
+  { title: "Air Purifiers", image: "/assets/category-slider/air-purifier.png", link: "/air-purifiers" },
+  { title: "Chimneys", image: "/assets/category-slider/chimney.png", link: "/chimneys" },
+  { title: "Coolers", image: "/assets/category-slider/coolers.png", link: "/coolers" },
+  { title: "Fridges", image: "/assets/category-slider/fridges.png", link: "/fridges" },
+  { title: "Gas Stoves", image: "/assets/category-slider/gas-stove.png", link: "/gas-stoves" },
+  { title: "Grooming", image: "/assets/category-slider/grooming.png", link: "/grooming" },
+  { title: "Headsets", image: "/assets/category-slider/headsets.png", link: "/headsets" },
+  { title: "Kitchen Appliances", image: "/assets/category-slider/kitchen-appliances.png", link: "/kitchen-appliances" },
+  { title: "Laptops", image: "/assets/category-slider/laptops.png", link: "/laptops" },
+  { title: "Laundry", image: "/assets/category-slider/laundry.png", link: "/laundry" },
+  { title: "Mobiles", image: "/assets/category-slider/mobile.png", link: "/mobiles" },
+  { title: "Printers", image: "/assets/category-slider/printer.png", link: "/printers" },
+  { title: "Televisions", image: "/assets/category-slider/televisions.png", link: "/televisions" },
+  { title: "Water Purifiers", image: "/assets/category-slider/water-purifier.png", link: "/water-purifiers" },
+  { title: "Wearables", image: "/assets/category-slider/wearables.png", link: "/wearables" },
+];
 
-interface Props {
-  categories: Category[];
-}
 
-export function CategorySlider(props: Props) {
-  const { categories } = props;
-  const [isLoaded, setIsLoaded] = useState(false);
 
-  useEffect(() => {
-    const img = new window.Image();
-    img.src = getImageSrc(categories[0]);
-    img.onload = () => setIsLoaded(true);
-  }, []);
+export function CategorySlider() {
 
-  const getImageSrc = (category: Category) => {
-    const lowerCaseName = category.name.toLowerCase();
-    if (defaultCategoryImages.hasOwnProperty(lowerCaseName)) {
-      return defaultCategoryImages[
-        lowerCaseName as keyof typeof defaultCategoryImages
-      ];
-    }
-    
-    return "/assets/category/air-conditioner.png";
-  };
+ 
 
   const MobileGridLayout = () => (
     <div className="block md:hidden w-full bg-white py-2 md:py-8 pb-0">
@@ -74,26 +49,25 @@ export function CategorySlider(props: Props) {
             msOverflowStyle: "none",
           }}
         >
-          {categories.map((category, index) => {
-            const imageSrc = getImageSrc(category);
-            const isFirstRow = index < Math.ceil(categories.length / 2);
+          {categorySlider.map((category, index) => {
+            const isFirstRow = index < Math.ceil(categorySlider.length / 2);
 
             return (
               <Link
-                href={`/category/${category.slug}?page=1`}
-                key={category.id}
+                href={`/category/${category.link}?page=1`}
+                key={index}
                 className="group cursor-pointer flex flex-col items-center"
                 style={{
                   gridRow: isFirstRow ? 1 : 2,
                   gridColumn: isFirstRow
                     ? index + 1
-                    : index - Math.ceil(categories.length / 2) + 1,
+                    : index - Math.ceil(categorySlider.length / 2) + 1,
                 }}
               >
                 <div className="relative w-20 h-20 sm:w-20 sm:h-20 mx-auto mb-2 overflow-hidden transition-all duration-300 bg-gray-50 rounded-lg">
                   <Image
-                    src={imageSrc}
-                    alt={category.name}
+                    src={category.image}
+                    alt={category.title}
                     fill
                     className="object-cover p-1 group-hover:opacity-90 transition-opacity duration-300"
                     sizes="56px"
@@ -103,6 +77,7 @@ export function CategorySlider(props: Props) {
                     }}
                   />
                 </div>
+                <span className="text-[9px] tracking-wider uppercase w-full text-center">{category.title}</span>
               </Link>
             );
           })}
@@ -112,12 +87,7 @@ export function CategorySlider(props: Props) {
   );
 
   const DesktopCarouselLayout = () => {
-    if (!isLoaded) {
-      return (
-        <div className="hidden md:block w-full bg-white py-8 min-h-[200px]" />
-      );
-    }
-
+    
     return (
       <div className="hidden md:block w-full bg-white py-8">
         <Carousel
@@ -137,22 +107,21 @@ export function CategorySlider(props: Props) {
               msOverflowStyle: "scrollbar",
             }}
           >
-            {categories.map((category, index) => {
-              const imageSrc = getImageSrc(category);
+            {categorySlider.map((category, index) => {
 
               return (
                 <CarouselItem
-                  key={category.id}
+                  key={index}
                   className="pl-1 basis-1/4 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-[12.5%] 2xl:basis-[10%]"
                 >
                   <Link
-                    href={`/category/${category.slug}?page=1`}
-                    className="group cursor-pointer"
+                    href={`/category/${category.link}?page=1`}
+                    className="group  flex flex-col cursor-pointer"
                   >
                     <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-32 md:h-32 mx-auto mb-3 overflow-hidden transition-all duration-300">
                       <Image
-                        src={imageSrc}
-                        alt={category.name}
+                        src={category.image}
+                        alt={category.title}
                         fill
                         className="object-cover p-2 group-hover:opacity-90 transition-opacity duration-300"
                         sizes="(max-width: 640px) 64px, (max-width: 768px) 80px, 96px"
@@ -162,6 +131,7 @@ export function CategorySlider(props: Props) {
                         }}
                       />
                     </div>
+                      <p className="text-xs mb-2 uppercase text-center w-full tracking-wider">{category.title}</p>
                   </Link>
                 </CarouselItem>
               );
