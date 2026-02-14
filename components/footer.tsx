@@ -10,7 +10,7 @@ import {
 import { useState, useEffect } from "react";
 import { Category } from "@/types";
 import { useRouter } from "next/navigation";
-
+import Link from "next/link";
 interface Props {
   categories: Category[];
 }
@@ -203,18 +203,31 @@ export const Footer = (props: Props) => {
         <div className="mt-16 pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-400">
-              © 2025 Favobliss. All rights reserved
+              © 2026 Favobliss. All rights reserved
             </p>
             <div className="flex gap-6 text-xs text-gray-500">
+              <Link href={`/privacy-policy`}>
+              
               <span className="hover:text-gray-300 cursor-pointer transition-colors">
                 Privacy Policy
               </span>
+              </Link>
+              <Link href={`terms-conditions`}>
+              
               <span className="hover:text-gray-300 cursor-pointer transition-colors">
                 Terms of Service
               </span>
+              </Link>
+              <Link href={`cancellation-policy`}>
               <span className="hover:text-gray-300 cursor-pointer transition-colors">
-                Cookie Policy
+                Cancellation Policy
               </span>
+              </Link>
+              <Link href={`return-policy`}>
+              <span className="hover:text-gray-300 cursor-pointer transition-colors">
+                Return Policy
+              </span>
+              </Link>
             </div>
           </div>
         </div>

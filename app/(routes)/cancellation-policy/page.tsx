@@ -130,7 +130,7 @@ Due to unavailability of the product.
 
   return (
     <div className="w-full flex flex-col text-center items-center justify-center mb-8">
-      <h1 className="text-3xl font-bold mt-10">Favobliss Privacy Policy</h1>
+      <h1 className="text-3xl font-bold mt-10">Favobliss Cancellation Policy</h1>
 
       {/* Added: content container */}
       <div className="w-full max-w-5xl mt-6 px-4">
